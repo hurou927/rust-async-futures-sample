@@ -5,7 +5,7 @@
 use futures::{
     executor::{block_on, ThreadPool, LocalPool, LocalSpawner},
     future,
-    future::{ready, pending},
+    future::{ready, pending, FutureExt},
     task::SpawnExt,
     task::LocalSpawnExt
 };
@@ -35,6 +35,11 @@ async fn long_task4(task_id: usize, sleep_time: u64) {
     std::thread::sleep(std::time::Duration::from_secs(sleep_time));
     println!("  >> Task {} done", task_id);
 }
+
+async fn long_task5(task_id: usize) -> usize {
+    task_id
+}
+
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
 
@@ -93,6 +98,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         );
     println!("8. join two future returning different type value {:?}", local_pool.run_until(futures));
     
+    println!("9. Map {:?}", block_on(long_task5(10).map(|v| v + 1)));
 
     Ok(())
 }

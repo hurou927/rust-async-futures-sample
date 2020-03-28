@@ -1,5 +1,5 @@
 [package]
-name = "async-std-sample"
+name = "futures-sample"
 version = "0.1.0"
 authors = ["hurou927 <god.be.with.ye.fs@gmail.com>"]
 edition = "2018"

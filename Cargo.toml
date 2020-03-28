@@ -1,6 +1,6 @@
 [workspace]
 
 members = [
-    "async-std-sample",
+    "futures-sample",
     "tokio-sample",
 ]
